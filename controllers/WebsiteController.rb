@@ -1,5 +1,5 @@
 class WebsiteController < BaseController
   get '/' do
-    'Hompage'
+    erb :home, :layout => :default
   end
 end
