@@ -1,10 +1,20 @@
 <html>
 <head>
 	<link  rel="stylesheet" type="text/css"  href="/css/main.css">
+
+
 </head>
 <body>
-	<%= erb(:_main_navigation) %>
+	<div class="l-container">
+		<h1><a id="logo">ArtGarbage Atelier</a></h1>
+		<header class="page-header l-box l-pull-right">
+			<div><%= erb(:_main_navigation) %></div>
+		</header>
+		<%= yield %>
+	</div>
 
-	<%= yield %>
+	<script src="/components/jquery/dist/jquery.min.js"></script>
+	<script src="/components/masonry/dist/masonry.pkgd.min.js"></script>
+	<script src="/js/main.js"></script>
 </body>
 </html>

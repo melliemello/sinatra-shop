@@ -1,6 +1,16 @@
-<form action="/products/create" method="POST">
-	<input type="text" name="title" placeholder="Име на продукта">
-	<input type="text" name="summary" placeholder="Кратко описание">
-	<input type="number" name="price" placeholder="Цена">
-	<input type="submit">
-</form>
+<div class="l-main">
+	<form action="/products/create" method="POST" enctype="multipart/form-data">
+		<input type="text" name="title" placeholder="Име на продукта">
+		<input type="text" name="summary" placeholder="Кратко описание">
+		<input type="number" name="price" placeholder="Цена">
+		<input type="file" name="picture">
+		<select multiple="true" name="categorys[]">
+			<% for @category in @categories %>
+				<option value="<%= @category.id %>"><%= @category.title %></option>
+			<% end %>
+		</select>
+		<input type="checkbox">
+
+		<input type="submit">
+	</form>
+</div>

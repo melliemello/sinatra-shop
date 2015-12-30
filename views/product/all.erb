@@ -1,11 +1,25 @@
-<h1>All Products</h1>
+<section class="l-main">
 
-<table>
-	<% for @product in @products %>
-		<tr>
-			<td><%= @product.title %></td>
-			<td><%= @product.summary %></td>
-			<td><%= @product.price %></td>
-		</tr>
-	<% end %>
-</table>
+	<section class="grid">
+		<% for @product in @products %>
+			<article class="grid-item product-teaser l-col-4 l-push-bottom">
+				<div class="product-image">
+					<% for @picture in @product.pictures %>
+						<img src="<%= @picture.file %>"/>
+					<% end %>
+				</div>
+				<div class="product-info">
+					<h2 class="product-title"><%= @product.title %></h2>
+					<p><%= @product.summary %></p>
+					<p><strong>Цена:</strong> <%= @product.price %></p>
+					<p><strong>Категории:</strong> 
+						<% for @category in @product.categorys %>
+							<span><%= @category.title %></span>
+						<% end %>
+					</p>
+					<p>Приоритетен:<%= @product.featured %></p>
+				</div>
+			</article>
+		<% end %>
+	</section>
+</section>
