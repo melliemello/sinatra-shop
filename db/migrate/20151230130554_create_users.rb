@@ -5,5 +5,16 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password
       t.timestamps null: false
     end
+
+    create_table :userdetails do |t|
+      t.belongs_to :users, index: true
+
+      t.string :fname
+      t.string :lname
+      t.string :phone
+      t.string :address
+      t.timestamps null: false
+
+    end
   end
 end

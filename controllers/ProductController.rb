@@ -4,7 +4,7 @@ module ArtGarbage
     class ProductController < BaseController
       get '/products' do
         @products = Models::Product.all
-        erb :all, :layout => :default
+        erb :all, :layout => :default # how to setup layout foldre for all controllers
       end
 
       get '/products/create' do
@@ -20,6 +20,7 @@ module ArtGarbage
         picture = Models::Picture.new({file: params[:picture]}) if params[:picture]
         @product.pictures << picture if params[:picture]
 
+        params[:categorys] ||= []
         params[:categorys].each do |c| 
           category = Models::Category.find(c.to_i)
           @product.categorys << category

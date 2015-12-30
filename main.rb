@@ -4,12 +4,14 @@ require "sinatra/reloader"
 require 'sass/plugin/rack'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
+require 'bcrypt'
 require './helpers/ApplicationHelpers' 
 require './controllers/controllers'
 require './models/models'
 
 
 Dir.glob('./helpers/uploaders/*.rb').each { |file| require file }
+Dir.glob('./helpers/services/*.rb').each { |file| require file }
 Dir.glob('./{helpers}/*.rb').each { |file| require file }
 
 #configure picture uploads
@@ -28,13 +30,14 @@ module ArtGarbage
       register Sinatra::Reloader
       set :root, Dir.pwd
       set :database, {adapter: "sqlite3", database: "aga.sqlite3"}
-      set :views, ["#{settings.root}/views/layout","#{settings.root}/views/product","#{settings.root}/views/website", ]
+      set :views, ["#{settings.root}/views/layout","#{settings.root}/views/product","#{settings.root}/views/website", "#{settings.root}/views/user"]
       set :static, true
     end
 
     use Controllers::BaseController
     use Controllers::ProductController
     use Controllers::WebsiteController
+    use Controllers::UserController
 
     use Sass::Plugin::Rack
     use Rack::Static, :urls => ['/scss', '/css', '/images', '/product_images', '/components', '/js'], :root => 'public'

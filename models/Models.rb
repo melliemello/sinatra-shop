@@ -5,6 +5,6 @@ module ArtGarbage
     autoload :Category, './models/Category'
     autoload :Categoryassignment, './models/CategoryAssignment'
     autoload :User, './models/User'
-    autoload :User, './models/UserDetails'
+    autoload :UserDetails, './models/UserDetails'
   end
 end
