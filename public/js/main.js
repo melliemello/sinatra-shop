@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	$('.grid').masonry({
 	  itemSelector: '.grid-item',
-	  columnWidth: 100
+	  columnWidth: 100 
 	});
 })
