@@ -3,37 +3,53 @@
 module ArtGarbage
   module Controllers
     class UserController < BaseController
-      enable :sessions
-
-      db = Models::User
-      user_service = ArtGarbage::Helpers::UserService.new(db)
+      helpers Sinatra::UserHelper
+      set :db, Models::User
 
       get '/users/register' do
         erb :register, :layout => :default
       end
       
       post '/users/register' do
-        is_valid_user = user_service.validate_user(params)
+        is_valid_user = validate_user(params)
         if is_valid_user then
-          user_service.create(params)
+          create(params)
         else
-          user_service.errors.to_s
-          'failed'
+          settings.errors.to_s
         end
       end
 
       get '/users/login' do
+        required_unauthorized
         erb :login, :layout => :default
       end
 
       post '/users/login' do
-        user_found = db.find_by({email: params[:email]})
-
-        if user_found.original_password == params[:password] then
-          session[:id] = 'user_found.id'
-          'success'
+        current_user = login(params)
+        if current_user 
+          new_session(current_user)
+          'success '
         else
-          "user not found"
+          'login failed'
+        end
+      end
+
+      get '/users/logout' do
+        end_session
+        redirect to '/'
+      end
+
+      get '/users/edit' do
+        @user = current_user
+        erb :edit, :layout => :default
+      end
+
+      post '/users/edit' do
+        is_valid_user = validate_user(params)
+        if is_valid_user then
+          update(current_user.id, params) ? 'user updated' : 'user update failed'
+        else
+          settings.errors.to_s
         end
       end
     end

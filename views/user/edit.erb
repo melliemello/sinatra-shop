@@ -1,0 +1,10 @@
+<section class="l-main">
+  <form class="form-container" action="/users/edit" method="POST">
+    <input type = "text" name="email" placeholder="Email" value="<%= @user.email %>">
+    <input type = "text" name="fname"  placeholder="Име" value="<%=@user.user_details.fname %>">
+    <input type = "text" name="lname" placeholder="Фамилия" value="<%=@user.user_details.lname %>">
+    <input type = "text" name="phone" placeholder="Телефон" value="<%=@user.user_details.phone %>">
+    <input type = "text" name="address" placeholder="Адрес" value="<%=@user.user_details.address %>">
+    <input type="submit">
+  </form>
+</section>

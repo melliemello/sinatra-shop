@@ -1,4 +1,11 @@
 <% @page_title ||= 'Art Garbage Atelier' %>
+<nav id="user-navigation" class="l-push-double-bottom l-pull-right">
+	<ul class="l-horizontal-list">
+		<li><a href="/users/<%= logged_in ? 'details' : 'login'%>"><%= logged_in ? 'Профил' : 'Вход'%></a></li>
+		<li><a href="/users/<%= logged_in ? 'logout' : 'register'%>"><%= logged_in ? 'Изход' : 'Регистрация'%></a></li>
+	</ul>
+</nav>
+<div class="clearfix"></div>
 <nav id="main-navigation" class="l-push-double-bottom">
 	<ul class="l-horizontal-list">
 		<li><a href="/">Начало</a></li>

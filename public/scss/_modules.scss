@@ -18,10 +18,20 @@
 	top:0;
 	right:0;
 	padding-right:3%;
-	padding-top:5%;
 	width:30%;
 	background-color:$color-neutral-lighter;
 	text-align:center;
+
+	#user-navigation {
+		padding:5px 10px;
+		background: $color-neutral;
+		font-size:0.8em;
+		text-align:right;
+
+		a {
+			color:white
+		}
+	}
 }
 
 #home-slider {

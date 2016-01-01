@@ -9,7 +9,7 @@ module ArtGarbage
       validates_presence_of :password
 
       def original_password
-        @original_password ||= Password.new(password)
+        @original_password ||= Password.new(self.password)
       end
 
       def original_password=(new_password)
