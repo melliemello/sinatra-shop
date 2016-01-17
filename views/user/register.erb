@@ -1,11 +1,26 @@
-<section class="l-main">
-	<form class="form-container" action="/users/register" method="POST">
-		<input type = "text" name="email" placeholder="Email">
-		<input type = "password" name="password" placeholder="Парола">
-		<input type = "text" name="fname"  placeholder="Име">
-		<input type = "text" name="lname" placeholder="Фамилия">
-		<input type = "text" name="phone" placeholder="Телефон">
-		<input type = "text" name="address" placeholder="Адрес">
-		<input type="submit">
-	</form>
+<section class="l-main l-push-double-top">
+  <form action="/users/register" method="POST">
+  	<div class="form-container " >
+  		<div class="form-group">
+			<input type = "text" name="email" placeholder="Email">
+  		</div>
+  		<div class="form-group">
+			<input type = "password" name="password"  placeholder="Парола">
+		</div>
+  		<div class="form-group">
+			<input type = "text" name="user_details_attributes[fname]"  placeholder="Име">
+		</div>
+		<div class="form-group">
+			<input type = "text" name="user_details_attributes[lname]" placeholder="Фамилия">
+		</div>
+		<div class="form-group">
+			<input type = "text" name="user_details_attributes[phone]" placeholder="Телефон">
+		</div>
+		<div class="form-group">
+			<input type = "text" name="user_details_attributes[address]" placeholder="Адрес">
+		</div>
+
+		<input type="submit" class="button secondary" >
+	</div>
+  </form>
 </section>

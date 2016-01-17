@@ -4,6 +4,7 @@ module ArtGarbage
     autoload :ProductController, './controllers/ProductController'
     autoload :WebsiteController, './controllers/WebsiteController'
     autoload :UserController, './controllers/UserController'
-    autoload :UserDetailsController, './controllers/UserDetailsController'
+    autoload :AdminController, './controllers/AdminController'
+    autoload :PurchaseController, './controllers/PurchaseController'
   end
 end

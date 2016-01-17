@@ -1,0 +1,52 @@
+<section class="l-main  l-push-double-top">
+	<form action="purchase/buy" method="POST">
+		<section id="shop-list">
+		<h2><%= @buyings%></h2>
+			<% for @product in @products %>
+				<article class="shop-list-item clearfix l-push-bottom">
+					<div class="shop-list-image" style="background-image: url('<%=@product.pictures.first.file %>')">
+
+					</div>
+					<div class="shop-list-content">
+						<h2 class="shop-list-title"><%= @product.title %> Qty: <%= @buyings[@product.id.to_s] %></h2>
+						<div class="shop-list-price">
+							<p><strong>Цена:</strong> <%= @product.price %> лв.</p>
+						</div>
+						<div id="delete-product" data-product_id="<%= @product.id %>">
+							<i class="fa fa-trash"></i>
+						</div>
+					</div>
+					<input type="hidden" name="buyings_attributes[][product_id]" value="<%= @product.id %>">
+					<input type="hidden" name="buyings_attributes[][quantity]" value="<%= @buyings[@product.id.to_s] %>">
+					<input type="hidden" name="buyings_attributes[][user_id]" value="<%= @user.id if @user %>">
+				</article>
+			<% end %>
+
+			<input type="submit" value="Поръчай">
+		</section>
+		<section id="shippment-address">
+			<div class="form-container">
+				<div class="form-group">
+					<label>Email:</label>
+					<input type = "text" name="email" placeholder="Email" value="<%= @user.email if @user %>">
+				</div>
+				<div class="form-group">
+					<label>Име:</label>
+					<input type = "text" name="fname"  placeholder="Име" value="<%=@user.user_details.fname if @user  %>">
+				</div>
+				<div class="form-group">
+					<label>Фамилия:</label>
+					<input type = "text" name="lname" placeholder="Фамилия" value="<%=@user.user_details.lname if @user  %>">
+				</div>
+				<div class="form-group">
+					<label>Телефон:</label>
+					<input type = "text" name="phone" placeholder="Телефон" value="<%=@user.user_details.phone if @user  %>">
+				</div>
+				<div class="form-group">
+					<label>Адрес:</label>
+					<input type = "text" name="address" placeholder="Адрес" value="<%=@user.user_details.address if @user  %>">
+				</div>
+			</div>
+		</section>
+	</form>
+</section>

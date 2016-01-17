@@ -1,6 +1,7 @@
-body, div, section, aside, footer, nav,span, p, ul, li, a, button, input, table, td, tr, h1, h2, h3, h4, h5 {
+body, div, section, aside, footer, nav,span, p, ul, li, a, button, input, label,table, td, tr, h1, h2, h3, h4, h5 {
 	margin:0;
 	padding:0;
+	box-sizing: border-box;
 }
 
 body {
@@ -24,7 +25,7 @@ img {
 
 
 .l-container {
-	padding:0 30px;
+	padding:0 6%;
 	 /*max-width:1280px; */
 }
 .l-horizontal-list {
@@ -61,6 +62,10 @@ img {
 	margin-bottom:60px;
 }
 
+.l-push-right {
+	margin-right:30px;
+}
+
 .l-main {
 	float:left;
 	margin-right:5%;
@@ -73,5 +78,14 @@ img {
 }
 
 .l-col-4 {
-	width:38%;
+	width:40%;
+}
+
+.l-col-6 {
+	width:50%;
+	margin-right:2%;
+}
+
+.l-text-right {
+	text-align:right;
 }

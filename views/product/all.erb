@@ -1,4 +1,4 @@
-<section class="l-main">
+<section class="l-main  l-push-double-top">
 
 	<section class="grid">
 		<% for @product in @products %>
@@ -9,7 +9,8 @@
 					<% end %>
 				</div>
 				<div class="product-info">
-					<h2 class="product-title"><%= @product.title %></h2>
+					<h2 class="product-title"><%= @product.title %><span class="add-to-card" data-product_id="<%= @product.id %>"><i class="fa fa-cart-plus"></i>
+</span></h2>
 					<p><%= @product.summary %></p>
 					<p><strong>Цена:</strong> <%= @product.price %></p>
 					<p><strong>Категории:</strong> 

@@ -1,0 +1,14 @@
+<section class="l-main l-push-double-top">
+	<div class="panel">
+		<table width="100%">
+			<% for @product in @products %>
+				<tr>
+					<td><strong><%= @product.title %></strong></td>
+					<td><%= @product.price %> лв.</td>
+					<td class="l-text-right"><a class="button secondary sm l-push-right" href="/products/edit/<%= @product.id %>">Редактирай</a><a class="button default sm" href="/products/delete/<%= @product.id %>">Изтрий</a></td>
+					<td></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</section>

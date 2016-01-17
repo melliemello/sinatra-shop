@@ -12,7 +12,7 @@ module Sinatra
 
     def current_user
       user = User.find(session[:id]) if session[:id]
-      user ? user : User.new()
+      user ? user : nil
     end
 
     def logged_in

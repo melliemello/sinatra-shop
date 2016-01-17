@@ -12,12 +12,27 @@
 		font-size:1.3em;
 	}
 }
+
+#admin-navigation {
+	position:fixed;
+	left:0;
+	top:60px;
+	background-color:$color-secondary;
+	z-index:999;
+	a {
+		display:block;
+		padding:20px 15px;
+		text-align:center;
+		color: white;
+		font-size:1.5em;
+	}
+}
 .page-header {
 	position:fixed;
 	z-index:999;
 	top:0;
 	right:0;
-	padding-right:3%;
+	padding-right:80px;
 	width:30%;
 	background-color:$color-neutral-lighter;
 	text-align:center;
@@ -32,13 +47,16 @@
 			color:white
 		}
 	}
+	div {
+		margin:15px;
+	}
 }
 
 #home-slider {
 	/*background: $color-neutral-lighter url('/images/home_bg.jpg') no-repeat;*/
 	background-size:100%;
 	#home-intro {
-		padding-top:55%;
+		padding-top:60%;
 		@extend %intro-text;
 	}
 }
@@ -54,12 +72,37 @@
 .button {
 	display:inline-block;
 	padding:7px 15px;
+	border:none;
 	&.primary {
 		background-color:$color-primary;
 		color:white;
 		&:hover {
 			background-color:$color-primary-dark;
+			cursor: pointer;
 		}
+	}
+
+	&.secondary {
+		background-color:$color-secondary;
+		color:white;
+		&:hover {
+			background-color:$color-secondary-dark;
+			cursor:pointer;
+		}
+	}
+
+	&.default {
+		background-color:$color-neutral;
+		color:white;
+		&:hover {
+			background-color:$color-neutral-dark;
+			cursor: pointer;
+		}
+	}
+
+	&.sm {
+		padding:3px 10px;
+		font-size:0.9em;
 	}
 }
 
@@ -81,4 +124,54 @@
 .product-teaser {
 	padding:15px;
 	background: white;
+}
+
+.form-container {
+	padding:30px;
+	background:white;
+	width:100%;
+	max-width:900px;
+	margin:0 auto;
+	.form-group {
+		margin-bottom:30px;
+
+		input {
+			display:inline-block;
+			padding:7px 15px 3px 0;
+			border:0;
+			color: $color-neutral-dark;
+			border-bottom: 1px solid #E3E9EF;
+			background:none;
+			box-shadow:none ;
+		}
+
+		select {
+			padding:15px;
+			border: 1px solid #E3E9EF;
+
+		}
+	}
+}
+
+.panel {
+	padding:30px;
+	background:white;
+	width:100%;
+}
+
+.shop-list-item {
+	.shop-list-image{
+		width:100px;
+		height:100px;
+		overflow:hidden;
+		background-position:center center;
+		background-size:cover;
+		float:left;
+
+	}
+
+	.sjop-list-content {
+		width:80%;
+		float:left;
+	}
 }

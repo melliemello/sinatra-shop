@@ -1,7 +1,9 @@
 require 'sinatra/base'
 require "sinatra/activerecord"
+require "sinatra/cookies"
 require "sinatra/reloader"
 require 'sass/plugin/rack'
+require 'json'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'bcrypt'
@@ -28,7 +30,12 @@ module ArtGarbage
       set :root, Dir.pwd
       set :public_path, Dir.pwd + '/public'
       set :database, {adapter: "sqlite3", database: "aga.sqlite3"}
-      set :views, ["#{settings.root}/views/layout","#{settings.root}/views/product","#{settings.root}/views/website", "#{settings.root}/views/user"]
+      set :views, [
+        "#{settings.root}/views/layout",
+        "#{settings.root}/views/product",
+        "#{settings.root}/views/website",
+        "#{settings.root}/views/user",
+        "#{settings.root}/views/purchase"]
       set :static, true
     end
 
@@ -36,8 +43,7 @@ module ArtGarbage
     use Controllers::ProductController
     use Controllers::WebsiteController
     use Controllers::UserController
-
-    
+    use Controllers::PurchaseController
 
     use Rack::Static, :urls => ['/scss', '/css', '/images', '/product_images', '/components', '/js'], :root => 'public'
 
