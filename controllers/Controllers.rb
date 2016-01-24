@@ -1,10 +1,10 @@
 module ArtGarbage
   module Controllers
-    autoload :BaseController, './controllers/BaseController'
-    autoload :ProductController, './controllers/ProductController'
-    autoload :WebsiteController, './controllers/WebsiteController'
-    autoload :UserController, './controllers/UserController'
-    autoload :AdminController, './controllers/AdminController'
-    autoload :PurchaseController, './controllers/PurchaseController'
+    autoload :BaseController, './controllers/base_controller'
+    autoload :ProductController, './controllers/product_controller'
+    autoload :WebsiteController, './controllers/website_controller'
+    autoload :UserController, './controllers/user_controller'
+    autoload :AdminController, './controllers/admin_controller'
+    autoload :PurchaseController, './controllers/purchase_controller'
   end
 end

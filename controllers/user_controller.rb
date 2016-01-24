@@ -14,7 +14,7 @@ module ArtGarbage
       post '/users/register' do
         required_unauthorized
         params[:permission_level] = 2
-        if create_product(params) then
+        if create_user(params) then
           redirect to '/users/login'
         else
           settings.errors.to_s
@@ -34,18 +34,19 @@ module ArtGarbage
         else
           'login failed'
         end
-
       end
 
       get '/users/logout' do
         required_registration
         end_session
+        cookies.delete('ag_card')
         redirect to '/'
       end
 
       get '/users/edit' do
         required_registration
         @user = current_user
+        @orders = Models::Order.where(user_id: current_user.id )
         erb :edit, :layout => :default
       end
 

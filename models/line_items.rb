@@ -1,6 +1,6 @@
 module ArtGarbage
   module Models
-    class Buying < ActiveRecord::Base
+    class LineItem < ActiveRecord::Base
       belongs_to :order
       belongs_to :product
 

@@ -7,8 +7,8 @@ module ArtGarbage
       has_many :pictures
       has_many :categoryassignments
       has_many :categorys, :through => :categoryassignments
-      has_many :buyings
-      has_many :orders, through: :buyings
+      has_many :line_items
+      has_many :orders, through: :line_items
 
       accepts_nested_attributes_for :pictures
       accepts_nested_attributes_for :categorys

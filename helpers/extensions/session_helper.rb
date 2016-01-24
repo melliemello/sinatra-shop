@@ -24,7 +24,7 @@ module Sinatra
     end
 
     def required_admin(redirect_path = '/')
-      redirect to redirect_path unless current_user.is_admin
+      redirect to redirect_path unless current_user && current_user.is_admin
     end
 
     def required_unauthorized(redirect_path = '/')

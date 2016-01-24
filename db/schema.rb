@@ -11,19 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117112635) do
-
-  create_table "buyings", force: :cascade do |t|
-    t.integer  "order_id"
-    t.integer  "product_id"
-    t.datetime "order_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "quantity"
-  end
-
-  add_index "buyings", ["order_id"], name: "index_buyings_on_order_id"
-  add_index "buyings", ["product_id"], name: "index_buyings_on_product_id"
+ActiveRecord::Schema.define(version: 20160123174250) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
@@ -41,21 +29,37 @@ ActiveRecord::Schema.define(version: 20160117112635) do
   add_index "categoryassignments", ["category_id"], name: "index_categoryassignments_on_category_id"
   add_index "categoryassignments", ["product_id"], name: "index_categoryassignments_on_product_id"
 
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "quantity"
+  end
+
+  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
+  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
+
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.string  "fname"
-    t.string  "lname"
-    t.string  "address"
-    t.string  "email"
-    t.string  "phone"
+    t.integer  "user_id"
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "address"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "order_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "pictures", force: :cascade do |t|
-    t.string  "file"
-    t.string  "alt"
-    t.integer "product_id"
+    t.string   "file"
+    t.string   "alt"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "pictures", ["product_id"], name: "index_pictures_on_product_id"

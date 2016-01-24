@@ -1,4 +1,4 @@
-body, div, section, aside, footer, nav,span, p, ul, li, a, button, input, label,table, td, tr, h1, h2, h3, h4, h5 {
+body, div, section, article, aside, footer, nav,span, p, ul, li, a, button, input, label,table, td, tr, h1, h2, h3, h4, h5 {
 	margin:0;
 	padding:0;
 	box-sizing: border-box;
@@ -60,6 +60,15 @@ img {
 }
 .l-push-double-bottom {
 	margin-bottom:60px;
+}
+
+.l-push-double-Y {
+	margin-bottom:60px;
+	margin-top:60px;
+}
+.l-push-Y {
+	margin-bottom:30px;
+	margin-top:30px;
 }
 
 .l-push-right {

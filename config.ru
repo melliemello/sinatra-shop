@@ -1,5 +1,5 @@
 require './main'
-# require 'sinatra/base'
+require 'sinatra/base'
 
 
 

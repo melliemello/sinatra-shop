@@ -1,14 +1,13 @@
 <section class="l-main  l-push-double-top">
 	<form action="purchase/buy" method="POST">
 		<section id="shop-list">
-		<h2><%= @buyings%></h2>
 			<% for @product in @products %>
 				<article class="shop-list-item clearfix l-push-bottom">
 					<div class="shop-list-image" style="background-image: url('<%=@product.pictures.first.file %>')">
 
 					</div>
 					<div class="shop-list-content">
-						<h2 class="shop-list-title"><%= @product.title %> Qty: <%= @buyings[@product.id.to_s] %></h2>
+						<h2 class="shop-list-title"><%= @product.title %> Qty: <%= @line_items[@product.id.to_s] %></h2>
 						<div class="shop-list-price">
 							<p><strong>Цена:</strong> <%= @product.price %> лв.</p>
 						</div>
@@ -16,10 +15,9 @@
 							<i class="fa fa-trash"></i>
 						</div>
 					</div>
-					<input type="hidden" name="buyings_attributes[][product_id]" value="<%= @product.id %>">
-					<input type="hidden" name="buyings_attributes[][quantity]" value="<%= @buyings[@product.id.to_s] %>">
-					<input type="hidden" name="buyings_attributes[][user_id]" value="<%= @user.id if @user %>">
-				</article>
+					<input type="hidden" name="line_items_attributes[][product_id]" value="<%= @product.id %>">
+					<input type="hidden" name="line_items_attributes[][quantity]" value="<%= @line_items[@product.id.to_s] %>">
+ 				</article>
 			<% end %>
 
 			<input type="submit" value="Поръчай">

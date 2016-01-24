@@ -1,3 +1,4 @@
+APP_ROOT = File.dirname(__FILE__)
 require 'sinatra/base'
 require "sinatra/activerecord"
 require "sinatra/cookies"
@@ -7,36 +8,31 @@ require 'json'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 require 'bcrypt'
-require './controllers/controllers'
-require './models/models'
+require "#{APP_ROOT}/controllers/controllers"
+require "#{APP_ROOT}/models/models"
 
-
-Dir.glob('./helpers/uploaders/*.rb').each { |file| require file }
-Dir.glob('./helpers/services/*.rb').each { |file| require file }
-Dir.glob('./helpers/extensions/*.rb').each { |file| require file }
+Dir.glob("#{APP_ROOT}/helpers/**/*.rb").each { |file| require file }
 
 #configure picture uploads
 CarrierWave.configure do |config|
-    config.root = './public/'
+  config.root = "#{APP_ROOT}/public/"
 end
-
-
-
 
 module ArtGarbage
   class App < Sinatra::Base
     configure  do
       register Sinatra::Reloader
-      set :root, Dir.pwd
-      set :public_path, Dir.pwd + '/public'
+      set :root, APP_ROOT
+      set :public_path, APP_ROOT + '/public'
       set :database, {adapter: "sqlite3", database: "aga.sqlite3"}
       set :views, [
-        "#{settings.root}/views/layout",
-        "#{settings.root}/views/product",
-        "#{settings.root}/views/website",
-        "#{settings.root}/views/user",
-        "#{settings.root}/views/purchase"]
+        "#{APP_ROOT}/views/layout",
+        "#{APP_ROOT}/views/product",
+        "#{APP_ROOT}/views/website",
+        "#{APP_ROOT}/views/user",
+        "#{APP_ROOT}/views/purchase"]
       set :static, true
+
     end
 
     use Controllers::BaseController
@@ -49,6 +45,7 @@ module ArtGarbage
 
     helpers Sinatra::ApplicationHelpers
     # register Sinatra::ActiveRecordExtension
+
   end
 end
 

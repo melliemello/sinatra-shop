@@ -1,0 +1,9 @@
+<% for @order in @orders %>
+	<article>
+		<div class="h2">Поръчка AG-A<%="#{@order.id}/#{@order.created_at}"%></div>
+		<small>
+			<%= erb :'../purchase/_order_list_item' %>
+		</small>
+	</article>
+	<hr class="l-push-Y"/>
+<% end %>

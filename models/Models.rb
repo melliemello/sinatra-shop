@@ -1,12 +1,12 @@
 module ArtGarbage
   module Models
-    autoload :Picture, './models/Picture'
-    autoload :Product, './models/Product'
-    autoload :Category, './models/Category'
-    autoload :Categoryassignment, './models/CategoryAssignment'
-    autoload :User, './models/User'
-    autoload :UserDetails, './models/UserDetails'
-    autoload :Order, './models/Order'
-    autoload :Buying, './models/Buying'
+    autoload :Picture, './models/picture'
+    autoload :Product, './models/product'
+    autoload :Category, './models/category'
+    autoload :Categoryassignment, './models/category_assignment'
+    autoload :User, './models/user'
+    autoload :UserDetails, './models/user_details'
+    autoload :Order, './models/order'
+    autoload :LineItem, './models/line_items'
   end
 end
