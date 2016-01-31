@@ -6,12 +6,14 @@ require "sinatra/reloader"
 require 'sass/plugin/rack'
 require 'json'
 require 'carrierwave'
+require 'pony'
 require 'carrierwave/orm/activerecord'
 require 'bcrypt'
+require "#{APP_ROOT}/app_config"
 require "#{APP_ROOT}/controllers/controllers"
 require "#{APP_ROOT}/models/models"
 
-Dir.glob("#{APP_ROOT}/helpers/**/*.rb").each { |file| require file }
+Dir.glob("#{APP_ROOT}/library/**/*.rb").each { |file| require file }
 
 #configure picture uploads
 CarrierWave.configure do |config|
@@ -25,14 +27,24 @@ module ArtGarbage
       set :root, APP_ROOT
       set :public_path, APP_ROOT + '/public'
       set :database, {adapter: "sqlite3", database: "aga.sqlite3"}
-      set :views, [
-        "#{APP_ROOT}/views/layout",
-        "#{APP_ROOT}/views/product",
-        "#{APP_ROOT}/views/website",
-        "#{APP_ROOT}/views/user",
-        "#{APP_ROOT}/views/purchase"]
+      set :base_url, 'localhost:9292'
       set :static, true
 
+      set :email_options, {
+        :via => :smtp,
+        :from => 'art.garbage.atelier@gmail.com',
+        :via_options => {
+          :address              => 'smtp.gmail.com',
+          :port                 => '587',
+          :enable_starttls_auto => true,
+          :user_name            => MAIL_CONFIG[:sender_username],
+          :password             => MAIL_CONFIG[:sender_password],
+          :authentication       => :plain, 
+          :domain               => "localhost.localdomain" 
+        }
+      }
+
+      Pony.options = settings.email_options
     end
 
     use Controllers::BaseController

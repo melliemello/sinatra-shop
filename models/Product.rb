@@ -11,7 +11,7 @@ module ArtGarbage
       has_many :orders, through: :line_items
 
       accepts_nested_attributes_for :pictures
-      accepts_nested_attributes_for :categorys
+      accepts_nested_attributes_for :categoryassignments
 
       def has_category?(id)
         categorys.include?(Category.find(id))

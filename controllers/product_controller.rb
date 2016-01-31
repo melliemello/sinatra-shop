@@ -2,24 +2,22 @@
 module ArtGarbage
   module Controllers
     class ProductController < BaseController
-      helpers Sinatra::ProductHelper
-
       get '/products' do
         @products = Models::Product.all
-        erb :all, :layout => :default # how to setup layout foldre for all controllers
+        render_template 'all'
       end
 
       get '/products/create' do
         required_admin
         @page_title = 'Създай нов продукт'
         @categories = Models::Category.all
-        erb :create, :layout => :default
+        render_template 'create'
       end
 
       post '/products/create' do
         required_admin
         # allow_binding :title, :summary, :picture
-        if create_product(params) then
+        if Product.create(params) then
           redirect to'/products/edit' 
         else
           'failed to create new product'
@@ -29,10 +27,10 @@ module ArtGarbage
       get '/products/edit' do
         required_admin
         @page_title = 'Въведени продукти'
-        @products = all_products
+        @products = Product.all
         @categories = Category.all
         if @products then
-          erb :edit_list, layout: :default
+          render_template 'edit_list'
         else
           'products not found'
         end
@@ -41,10 +39,10 @@ module ArtGarbage
       get '/products/edit/:id' do
         # required_admin
         @page_title = 'Редакция на продукт'
-        @product = find_product(params[:id])
+        @product = Product.find(params[:id])
         @categories = Category.all
         if @product then
-          erb :edit, layout: :default
+          render_template 'edit'
         else
           'product not found'
         end
@@ -53,7 +51,10 @@ module ArtGarbage
       post '/products/edit/' do
         # required_admin
         # allow_binding :title, :summary, :picture
-        if update_product(params) then
+        product = Product.find(params[:id])
+        product.categorys.clear
+        product.update(params)
+        if product then
           redirect to'/products/edit'
         else
           'product update failed'

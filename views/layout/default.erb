@@ -8,12 +8,12 @@
 </head>
 <body>
 	<% if current_user && current_user.is_admin then %>
-		<%= erb(:_admin_navigation) %>
+		<%= render_template '_admin_navigation' %>
 	<% end %>
 	<div class="l-container">
 		<h1><a id="logo">ArtGarbage Atelier</a></h1>
 		<header class="page-header l-pull-right">
-			<div><%= erb(:_main_navigation) %></div>
+			<div><%= render_template '_main_navigation' %></div>
 		</header>
 		<%= yield %>
 	</div>

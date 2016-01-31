@@ -15,14 +15,14 @@
 				<input type="file" name="pictures_attributes[][file]">
 			</div>
 			<div class="form-group">
-				<select multiple="true" name="categorys_attributes[][id]">
+				<select multiple="true" name="categoryassignments_attributes[][category_id]">
 					<% for @category in @categories %>
 						<option value="<%= @category.id %>"><%= @category.title %></option>
 					<% end %>
 				</select>
 			</div>
 			<div class="form-group">
-				<input type="checkbox" name="featured">
+				<input type="checkbox" name="featured" value="false">
 			</div>
 			<input type="submit" class="button secondary" value="Създай">
 		</div>

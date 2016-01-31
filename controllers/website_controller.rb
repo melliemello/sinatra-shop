@@ -2,7 +2,7 @@ module ArtGarbage
   module Controllers
     class WebsiteController < BaseController
       get '/' do
-        erb :home, :layout => :default
+        render_template "home"
       end
     end
   end

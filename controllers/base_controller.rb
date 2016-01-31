@@ -5,6 +5,7 @@ module ArtGarbage
       configure do
         set :root, ArtGarbage::App.settings.root
         set :views, ArtGarbage::App.settings.views
+        set :base_url, ArtGarbage::App.settings.base_url
         set :errors, []
       end
 
