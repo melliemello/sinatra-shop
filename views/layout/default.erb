@@ -7,6 +7,7 @@
 
 </head>
 <body>
+	<%=	styled_flash %>
 	<% if current_user && current_user.is_admin then %>
 		<%= render_template '_admin_navigation' %>
 	<% end %>

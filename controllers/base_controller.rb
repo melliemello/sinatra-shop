@@ -11,8 +11,9 @@ module ArtGarbage
 
       helpers Sinatra::ApplicationHelpers
       helpers Sinatra::SessionHelper
-      register Sinatra::ActiveRecordExtension
       helpers Sinatra::Cookies
+      register Sinatra::ActiveRecordExtension
+      register Sinatra::Flash
       enable :sessions
 
       set :database, {adapter: "sqlite3", database: "aga.sqlite3"}
