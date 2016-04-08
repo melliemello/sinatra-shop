@@ -1,1 +1,9 @@
+.DS_STORE
+*.swp
+*.rbc
+*.sass-cache
+/pkg
+/doc/api
 /Rakefile
+*.sqlite3
+app_config.rb
