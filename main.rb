@@ -14,6 +14,8 @@ require "#{APP_ROOT}/app_config"
 require "#{APP_ROOT}/controllers/controllers"
 require "#{APP_ROOT}/models/models"
 
+RACK_ENV ||= ENV["RACK_ENV"] || "development"
+
 Dir.glob("#{APP_ROOT}/library/**/*.rb").each { |file| require file }
 
 #configure picture uploads

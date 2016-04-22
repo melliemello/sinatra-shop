@@ -1,12 +1,19 @@
-development:
-  adapter: postgresql
-  database: test
-  host: localhost
-  pool: 5
-  timeout: 5000
-
 production:
   adapter: postgresql
-  database: test
+  pool: 5
+  timeout: 5000
+  encoding: utf8
+  database: <%=ENV['OPENSHIFT_APP_NAME']%>
+  username: <%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>
+  password: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>
+  host: <%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>
+  port: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
+  min_messages: ERROR
+  reconnect: false
+  
+development:
+  adapter: sqlite3
+  encoding: utf8
+  database: aga.sqlite3
   pool: 5
   timeout: 5000
