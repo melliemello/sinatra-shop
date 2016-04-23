@@ -44,7 +44,6 @@ GEM
       net-ssh (>= 2.6.5)
       net-ssh-gateway (>= 1.2.0)
     open4 (1.3.4)
-    pg (0.18.4-x86-mingw32)
     pony (1.11)
       mail (>= 2.0)
     rack (1.6.4)
@@ -95,7 +94,6 @@ DEPENDENCIES
   bcrypt
   carrierwave
   json
-  pg
   pony
   rack (= 1.6.4)
   rake
