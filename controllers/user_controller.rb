@@ -38,20 +38,19 @@ module ArtGarbage
       end
 
       post '/users/login' do
-        user = User.find_by({email: params[:email]})
-        password_is_correct = user ? user.password == params[:password] : false
-        login_successful = user && user.is_active && password_is_correct
+        password_is_correct = false
+        current_user = User.find_by({email: params[:email]})
+        if current_user then
+          password_is_correct = current_user.password == params[:password]
+        end
 
-        unless login_successful then 
-          flash[:error] = 'Не беше намерен потребител с тези данни.'
-          render_template 'login'
-        else
-          new_session(user)
-          flash[:success] = 'Успешно се регистрирахте в нашата система.'
+        if current_user.is_active && password_is_correct 
+          new_session(current_user)
           redirect ('/products')
+        else
+          'login failed'
         end
       end
-
 
       get '/users/activation/:activation_digest' do
         activation_digest = CGI::unescape(params[:activation_digest])

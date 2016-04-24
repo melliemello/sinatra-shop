@@ -9,7 +9,6 @@ require 'carrierwave'
 require 'pony'
 require 'carrierwave/orm/activerecord'
 require 'bcrypt'
-require 'sinatra/flash'
 require "#{APP_ROOT}/app_config"
 require "#{APP_ROOT}/controllers/controllers"
 require "#{APP_ROOT}/models/models"
@@ -39,7 +38,7 @@ module ArtGarbage
 
       set :email_options, {
         :via => :smtp,
-        :from => 'art.garbage.atelie@gmail.com',
+        :from => 'art.garbage.atelier@gmail.com',
         :via_options => {
           :address              => 'smtp.gmail.com',
           :port                 => '587',
