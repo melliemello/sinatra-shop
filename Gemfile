@@ -5,7 +5,14 @@ gem 'sinatra', '~> 1.4', '>= 1.4.6'
 
 gem 'sinatra-activerecord'
 gem 'sinatra-reloader'
-gem 'sqlite3'
+group :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
+
 gem 'rake'
 gem 'bcrypt'
 gem 'carrierwave'
