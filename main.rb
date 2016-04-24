@@ -14,7 +14,11 @@ require "#{APP_ROOT}/app_config"
 require "#{APP_ROOT}/controllers/controllers"
 require "#{APP_ROOT}/models/models"
 
+#configure db
 RACK_ENV ||= ENV["RACK_ENV"] || "development"
+dbconfig = YAML.load(ERB.new(File.read("config/database.yml")).result)
+RACK_ENV ||= ENV["RACK_ENV"] || "development"
+ActiveRecord::Base.establish_connection dbconfig[RACK_ENV]
 
 Dir.glob("#{APP_ROOT}/library/**/*.rb").each { |file| require file }
 
@@ -23,13 +27,13 @@ CarrierWave.configure do |config|
   config.root = "#{APP_ROOT}/public/"
 end
 
+
 module ArtGarbage
   class App < Sinatra::Base
     configure  do
       register Sinatra::Reloader
       set :root, APP_ROOT
       set :public_path, APP_ROOT + '/public'
-      set :database, {adapter: "sqlite3", database: "aga.sqlite3"}
       set :base_url, 'localhost:9292'
       set :static, true
 
